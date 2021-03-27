@@ -3,17 +3,39 @@ import 'package:splashscreen/splashscreen.dart';
 import 'package:project_01/screen/LoginScreen.dart';
 import 'package:project_01/screen/LoginScreen1.dart';
 
+main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
-void main() =>  runApp(MaterialApp(
+/*void main() =>  runApp(MaterialApp(
   home: MyApp(),
-  ));
+  ));*/
+
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      title: "Buy food in RMUTL",
+      debugShowCheckedModeBanner: false,
+      home: MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  final FirebaseAuth _auth = Firebase.instance;
+
+
+
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
